@@ -1,9 +1,10 @@
-<div class="card app-card">
-  <img class="card-img-top" src="http://via.placeholder.com/350x250" alt="">
-  <div class="card-block">
-    <h6 class="card-subtitle">{{currentDinner.category}} Food &#183; {{currentDinner.city}}</h6>
-    <h4 class="card-title">{{currentDinner.title}}</h4>
-    <p class="card-text">${{currentDinner.rate}} per person &#183; Free Cancelation</p>
-    <a href="#" class="card-link">More Info</a>
+<a routerLink="/dinners/{{currentDinner.id}}">
+  <div class="card app-card">
+    <img class="card-img-top" src="http://via.placeholder.com/350x250" alt="">
+    <div class="card-block">
+      <h6 class="card-subtitle">{{currentDinner.category}} Food &#183; {{currentDinner.city}}</h6>
+      <h4 class="card-title">{{currentDinner.title}}</h4>
+      <p class="card-text">${{currentDinner.rate}} per person &#183; Free Cancelation</p>
+    </div>
   </div>
-</div>
+</a>

@@ -8,7 +8,7 @@ import { DinnerComponent } from './dinner/dinner.component';
 
 import { DinnerModule } from './dinner/dinner.module';
 
-const routes: Routes = [{ path: '', component: DinnerComponent }];
+const routes: Routes = [{ path: '', redirectTo: '/dinners', pathMatch: 'full' }];
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
