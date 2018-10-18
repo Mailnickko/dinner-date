@@ -46,6 +46,15 @@ export class DinnerService {
     }
   ];
 
+  public getDinnerById(dinnerId: string): Observable<Dinner> {
+    return new Observable<Dinner>(observer => {
+      setTimeout(() => {
+        const foundDinner = this.dinners.find(dinner => dinner.id === dinnerId);
+        observer.next(foundDinner);
+      }, 100);
+    });
+  }
+
   public getDinners(): Observable<Dinner[]> {
     const dinnerObservable: Observable<Dinner[]> = new Observable(observer => {
       setTimeout(() => {
