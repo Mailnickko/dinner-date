@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Dinner } from './dinner.model';
 
 @Injectable()
 export class DinnerService {
   private dinners: any[] = [
     {
-      id: 1,
+      id: '1',
       title: 'Cajun Extravaganza',
       city: 'Los Angeles',
       street: 'Flower Street',
@@ -17,7 +19,7 @@ export class DinnerService {
       createdAt: '12/24/2018'
     },
     {
-      id: 2,
+      id: '2',
       title: 'Baja Time',
       city: 'New York',
       street: 'Times Square',
@@ -30,7 +32,7 @@ export class DinnerService {
       createdAt: '12/24/2018'
     },
     {
-      id: 3,
+      id: '3',
       title: 'Oodles of Noodles',
       city: 'San Francisco',
       street: 'Main Street',
@@ -44,7 +46,12 @@ export class DinnerService {
     }
   ];
 
-  public getDinners(): any[] {
-    return this.dinners;
+  public getDinners(): Observable<Dinner[]> {
+    const dinnerObservable: Observable<Dinner[]> = new Observable(observer => {
+      setTimeout(() => {
+        observer.next(this.dinners);
+      }, 2000);
+    });
+    return dinnerObservable;
   }
 }

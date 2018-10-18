@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DinnerService } from '../shared/dinner.service';
+import { Dinner } from '../shared/dinner.model';
 
 @Component({
   selector: 'app-dinner-list',
@@ -7,11 +8,18 @@ import { DinnerService } from '../shared/dinner.service';
   styleUrls: ['./dinner-list.component.css']
 })
 export class DinnerListComponent implements OnInit {
-  dinners: any = [];
+  dinners: Dinner[] = [];
 
   constructor(private dinnerService: DinnerService) {}
 
   ngOnInit() {
-    this.dinners = this.dinnerService.getDinners();
+    const dinnerObservable = this.dinnerService.getDinners();
+    dinnerObservable.subscribe(
+      (dinners: Dinner[]) => {
+        this.dinners = dinners;
+      },
+      err => {},
+      () => {}
+    );
   }
 }
